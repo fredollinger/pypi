@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  pypi-server:
+    image: pypiserver/pypiserver:latest
+    ports:
+      - 8081:8080
+    volumes:
+      - type: volume
+        source: pypi-server
+        target: /rick/epool/pypackages
+    command: -P . -a . /rick/epool/pypackages
+    restart: always
+
+volumes:
+  pypi-server:
